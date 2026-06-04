@@ -1,5 +1,7 @@
-package com.example.admin.model;
+package com.example.transport.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.Data;
 
 /*d
@@ -9,10 +11,15 @@ import lombok.Data;
 
 */
 @Data
+@Entity
+@Table(name = "locations")
 public class Locations {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String address;
     private Integer type;
+    @Column(name = "current_capacity")
     private Long currentCapacity;
 }
