@@ -1,5 +1,5 @@
 # Giai đoạn 1: Lôi bộ đồ nghề JDK và Gradle ra để build
-FROM eclipse-temurin:17-jdk-jammy AS build
+FROM eclipse-temurin:21-jdk-jammy AS build
 WORKDIR /app
 
 COPY gradlew .
@@ -15,7 +15,7 @@ COPY src ./src
 RUN ./gradlew clean build -x test --no-daemon -Dorg.gradle.jvmargs="-Xmx256m -XX:MaxMetaspaceSize=128m"
 
 # Giai đoạn 2: Lấy file .jar vừa build đem đi chạy
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 
 COPY --from=build /app/build/libs/*.jar app.jar
