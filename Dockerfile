@@ -15,7 +15,7 @@ RUN chmod +x ./gradlew
 COPY src ./src
 
 # Gõ lệnh build ra file .jar (bỏ qua test cho lẹ)
-RUN ./gradlew clean build -x test
+RUN ./gradlew clean build -x test --no-daemon
 
 # Giai đoạn 2: Lấy file .jar vừa build đem đi chạy
 FROM eclipse-temurin:17-jre-jammy
