@@ -19,6 +19,7 @@ public class Locations {
     private Long id;
     private String name;
     private String address;
+    private String code;
     private Integer type;
     @Column(name = "current_capacity")
     private Long currentCapacity;
